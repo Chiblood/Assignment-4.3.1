@@ -64,7 +64,6 @@ public class Program
         Console.WriteLine("Customer IDNO :{0}", id);
         Console.WriteLine("Customer Name :{0}", name);
         Console.WriteLine("Units Consumed :{0}", units);
-        Console.WriteLine("Amount Charges @$ {0} per unit : {1:F2}", charges / units, charges);
         Console.WriteLine("Surcharge Amount : {0:F2}", surcharge);
         Console.WriteLine("Net Amount Paid By the Customer : {0:F2}", netAmount);
     }
