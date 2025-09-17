@@ -29,7 +29,15 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        // variables declaration
         double units, charges = 0, surcharge = 0, netAmount = 0;
+
+        // maximum charges for each tier
+        const double firstTierMax = 199 * 1.20;
+        const double secondTierMax = 199 * 1.50;
+        const double thirdTierMax = 199 * 1.80;
+
+        // Input customer details
         Console.Write("Input Customer ID : ");
         int id = Convert.ToInt32(Console.ReadLine());
         Console.Write("Input Customer Name : ");
@@ -37,23 +45,23 @@ public class Program
         Console.Write("Input the units consumed : ");
         units = Convert.ToDouble(Console.ReadLine());
 
-        if (units < 200)
+        if (units < 200 && units >= 0) // upto 199 units
         {
             charges = units * 1.20;
         }
-        else if (units >= 200 && units < 400)
+        else if (units >= 200 && units < 400) // 200 to 399 units
         {
-            charges = 240 + ((units - 200) * 1.50);
+            charges = firstTierMax + ((units - 199) * 1.50);
         }
-        else if (units >= 400 && units < 600)
+        else if (units >= 400 && units < 600) // 400 to 599 units
         {
-            charges = 240 + 300 + ((units - 400) * 1.80);
+            charges = firstTierMax + secondTierMax + ((units - 399) * 1.80);
         }
-        else
+        else if (units >= 600) // 600 and above units
         {
-            charges = 240 + 300 + 360 + ((units - 600) * 2.00);
+            charges = firstTierMax + secondTierMax + thirdTierMax + ((units - 599) * 2.00);
         }
-
+        // Calculate surcharge if applicable
         if (charges > 400)
         {
             surcharge = charges * 0.15;
