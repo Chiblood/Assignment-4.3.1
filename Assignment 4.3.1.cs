@@ -1,0 +1,70 @@
+﻿/* Assignment 4.3.1
+Write a program in C# Sharp to calculate and print the Electricity bill of a given customer. The customer id., name and unit consumed by the user should be taken from the keyboard and display the total amount to pay to the customer. The charge are as follows: (you may change the charge sheet values)
+Unit -> Charge/unit
+
+upto 199 -> @1.20
+
+200 and above but less than 400 -> @1.50
+
+400 and above but less than 600 -> @1.80
+
+600 and above -> @2.00
+
+If bill exceeds $ 400 then a surcharge of 15% will be charged.
+
+Test Data :
+1001
+James
+800
+Expected Output :
+Customer IDNO :1001
+Customer Name :James
+unit Consumed :800
+Amount Charges @$ 2.00 per unit : 1600.00
+Surcharge Amount : 240.00
+Net Amount Paid By the Customer : 1840.00
+*/
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        double units, charges = 0, surcharge = 0, netAmount = 0;
+        Console.Write("Input Customer ID : ");
+        int id = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Input Customer Name : ");
+        string name = Console.ReadLine();
+        Console.Write("Input the units consumed : ");
+        units = Convert.ToDouble(Console.ReadLine());
+
+        if (units < 200)
+        {
+            charges = units * 1.20;
+        }
+        else if (units >= 200 && units < 400)
+        {
+            charges = units * 1.50;
+        }
+        else if (units >= 400 && units < 600)
+        {
+            charges = units * 1.80;
+        }
+        else
+        {
+            charges = units * 2.00;
+        }
+
+        if (charges > 400)
+        {
+            surcharge = charges * 0.15;
+        }
+
+        netAmount = charges + surcharge;
+
+        Console.WriteLine("Customer IDNO :{0}", id);
+        Console.WriteLine("Customer Name :{0}", name);
+        Console.WriteLine("unit Consumed :{0}", units);
+        Console.WriteLine("Amount Charges @$ {0} per unit : {1:F2}", charges / units, charges);
+        Console.WriteLine("Surcharge Amount : {0:F2}", surcharge);
+        Console.WriteLine("Net Amount Paid By the Customer : {0:F2}", netAmount);
+    }
+}
