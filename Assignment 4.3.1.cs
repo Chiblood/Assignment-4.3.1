@@ -1,16 +1,17 @@
 ﻿/* Assignment 4.3.1
-Write a program in C# Sharp to calculate and print the Electricity bill of a given customer. The customer id., name and unit consumed by the user should be taken from the keyboard and display the total amount to pay to the customer. The charge are as follows: (you may change the charge sheet values)
+Write a program in C# Sharp to calculate and print the Electricity bill of a given customer. 
+The customer id., name and unit consumed by the user should be taken from the keyboard and display the total amount to pay to the customer. 
+
+The formula for calculating the total amount to pay in the electricity bill is as follows:
+
 Unit -> Charge/unit
-
 upto 199 -> @1.20
-
 200 and above but less than 400 -> @1.50
-
 400 and above but less than 600 -> @1.80
-
 600 and above -> @2.00
-
 If bill exceeds $ 400 then a surcharge of 15% will be charged.
+
+As the number of units used the cost increases as per the above slab. 
 
 Test Data :
 1001
@@ -32,7 +33,7 @@ public class Program
         Console.Write("Input Customer ID : ");
         int id = Convert.ToInt32(Console.ReadLine());
         Console.Write("Input Customer Name : ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine() ?? string.Empty;
         Console.Write("Input the units consumed : ");
         units = Convert.ToDouble(Console.ReadLine());
 
@@ -42,15 +43,15 @@ public class Program
         }
         else if (units >= 200 && units < 400)
         {
-            charges = units * 1.50;
+            charges = 240 + ((units - 200) * 1.50);
         }
         else if (units >= 400 && units < 600)
         {
-            charges = units * 1.80;
+            charges = 240 + 300 + ((units - 400) * 1.80);
         }
         else
         {
-            charges = units * 2.00;
+            charges = 240 + 300 + 360 + ((units - 600) * 2.00);
         }
 
         if (charges > 400)
@@ -62,7 +63,7 @@ public class Program
 
         Console.WriteLine("Customer IDNO :{0}", id);
         Console.WriteLine("Customer Name :{0}", name);
-        Console.WriteLine("unit Consumed :{0}", units);
+        Console.WriteLine("Units Consumed :{0}", units);
         Console.WriteLine("Amount Charges @$ {0} per unit : {1:F2}", charges / units, charges);
         Console.WriteLine("Surcharge Amount : {0:F2}", surcharge);
         Console.WriteLine("Net Amount Paid By the Customer : {0:F2}", netAmount);
