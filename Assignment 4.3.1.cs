@@ -48,7 +48,7 @@ public class Program
         if (units < 200 && units >= 0) // 0 to 199 units
             charges = units * 1.20;
         else if (units >= 200 && units < 400) // 200 to 399 units
-            charges = firstTierMax + ((units - 199) * 1.50); 
+            charges = firstTierMax + ((units - 199) * 1.50);
         else if (units >= 400 && units < 600) // 400 to 599 units
             charges = firstTierMax + secondTierMax + ((units - 399) * 1.80);
         else if (units >= 600) // 600 and above units
